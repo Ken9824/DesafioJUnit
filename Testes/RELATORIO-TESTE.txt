@@ -58,4 +58,25 @@ Após esse ajuste foi possível realizar o teste sem erros.
 
 ---------------------------------------------------------------
 
+Teste Prisioneiro A com DELACAO e Prisioneiro B sem DELACAO
+
+	@Test
+	public void testeJulgamentoDelacaoA() {
+		
+		int penaEsperada = 13;
+		
+		String rPrisioneiroA = "DELACAO";
+		String rPrisioneiroB = null;
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		int resposta = jp.calculaPena(rPrisioneiroA, rPrisioneiroB);
+		assertEquals(penaEsperada, resposta);
+	}
+
+Teste realizado com sucesso sem erro
+
+
+---------------------------------------------------------------
+
+
 
