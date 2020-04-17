@@ -2,6 +2,7 @@ Nome: Rodrigo Ken Harada Hirata
 RM: 82673
 
 Código da classe JUnit:
+
 package br.com.nac.testes;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,4 +17,8 @@ class TesteJulgamentoPrisioneiro {
 	}
 
 }
+
+Primeiro teste:
+Uma classe inexistente estava na classe JulgamentoPrisioneiro e portando gerou um erro que não permitia gerar o teste.
+
 
