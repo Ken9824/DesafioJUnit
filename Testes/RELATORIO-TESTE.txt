@@ -1,3 +1,19 @@
 Nome: Rodrigo Ken Harada Hirata	
 RM: 82673
 
+Código da classe JUnit:
+package br.com.nac.testes;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TesteJulgamentoPrisioneiro {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}
+
