@@ -58,4 +58,178 @@ Após esse ajuste foi possível realizar o teste sem erros.
 
 ---------------------------------------------------------------
 
+Teste Prisioneiro A com DELACAO e Prisioneiro B sem DELACAO
+
+	@Test
+	public void testeJulgamentoDelacaoA() {
+		
+		int penaEsperada = 13;
+		
+		String rPrisioneiroA = "DELACAO";
+		String rPrisioneiroB = null;
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		int resposta = jp.calculaPena(rPrisioneiroA, rPrisioneiroB);
+		assertEquals(penaEsperada, resposta);
+	}
+
+Teste realizado com sucesso sem erro
+
+
+---------------------------------------------------------------
+
+Teste Prisioneiro A sem DELACAO e Prisioneiro B com DELACAO
+
+	@Test
+	public void testeJulgamentoDelacaoB() {
+		
+		int penaEsperada = 10;
+		
+		String rPrisioneiroA = null;
+		String rPrisioneiroB = "DELACAO";
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		int resposta = jp.calculaPena(rPrisioneiroA, rPrisioneiroB);
+		assertEquals(penaEsperada, resposta);
+	}
+Teste realizado com sucesso sem erro
+
+
+---------------------------------------------------------------
+
+Teste do Prisioneiro A e B sem DELACAO
+
+	@Test
+	public void testeJulgamentoDelacaoBElse() {
+		
+		int penaEsperada = 11;
+		
+		String rPrisioneiroA = null;
+		String rPrisioneiroB = null;
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		int resposta = jp.calculaPena(rPrisioneiroA, rPrisioneiroB);
+		assertEquals(penaEsperada, resposta);
+	}
+
+Teste realizado com sucesso sem erro
+
+
+---------------------------------------------------------------
+Versão final do JUnit
+
+package br.com.nac.testes;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+import br.com.nac.classe.JulgamentoPrisioneiro;
+
+class TesteJulgamentoPrisioneiro {
+	
+	
+	@Test
+	public void testeJulgamentoDelacaoAB() {
+		
+		int penaEsperada = 15;
+		
+		String rPrisioneiroA = "DELACAO";
+		String rPrisioneiroB = "DELACAO";
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		int resposta = jp.calculaPena(rPrisioneiroA, rPrisioneiroB);
+		assertEquals(penaEsperada, resposta);
+	}
+	
+	@Test
+	public void testeJulgamentoDelacaoA() {
+		
+		int penaEsperada = 13;
+		
+		String rPrisioneiroA = "DELACAO";
+		String rPrisioneiroB = null;
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		int resposta = jp.calculaPena(rPrisioneiroA, rPrisioneiroB);
+		assertEquals(penaEsperada, resposta);
+	}
+	
+	@Test
+	public void testeJulgamentoDelacaoB() {
+		
+		int penaEsperada = 10;
+		
+		String rPrisioneiroA = null;
+		String rPrisioneiroB = "DELACAO";
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		int resposta = jp.calculaPena(rPrisioneiroA, rPrisioneiroB);
+		assertEquals(penaEsperada, resposta);
+	}
+
+	@Test
+	public void testeJulgamentoDelacaoBElse() {
+		
+		int penaEsperada = 11;
+		
+		String rPrisioneiroA = null;
+		String rPrisioneiroB = null;
+		
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		int resposta = jp.calculaPena(rPrisioneiroA, rPrisioneiroB);
+		assertEquals(penaEsperada, resposta);
+	}
+	
+
+
+}
+
+
+---------------------------------------------------------------
+Versão final da classe JulgamentoPrisioneiro
+
+package br.com.nac.classe;
+
+public class JulgamentoPrisioneiro {
+	private int PENA_INOCENCIA = 13;
+	private int PENA_CONDENACAO_MUTUA = 15;
+	private int PENA_CONDENACAO_INDIVIDUAL = 10;
+	private int PENA_CONDENACAO_CUMPLICES = 11;
+
+	Resposta r = new Resposta();
+	
+	public int calculaPena(String respostaPrisioneiroA, String respostaPrisioneiroB) {
+		if (respostaPrisioneiroA == r.DELACAO()) {
+			if (respostaPrisioneiroB == r.DELACAO()) {
+				return PENA_CONDENACAO_MUTUA;
+			} else {
+				return PENA_INOCENCIA;
+			}
+		} else {
+			if (respostaPrisioneiroB == r.DELACAO()) {
+				return PENA_CONDENACAO_INDIVIDUAL;
+			} else {
+				return PENA_CONDENACAO_CUMPLICES;
+			}
+		}
+	}
+
+}
+
+
+---------------------------------------------------------------
+Versão final da classe Resposta
+
+package br.com.nac.classe;
+
+public class Resposta {
+	public String DELACAO(){
+		return "DELACAO";
+	}
+	
+	
+}
+
+
 
