@@ -1,7 +1,8 @@
 Nome: Rodrigo Ken Harada Hirata	
 RM: 82673
-
+---------------------------------------------------------------
 Código da classe JUnit:
+
 package br.com.nac.testes;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,4 +17,45 @@ class TesteJulgamentoPrisioneiro {
 	}
 
 }
+
+---------------------------------------------------------------
+Primeiro teste:
+Uma classe inexistente estava na classe JulgamentoPrisioneiro e portando gerou um erro que não permitia gerar o teste.
+
+---------------------------------------------------------------
+Ajuste na classe JulgamentoPrisioneiro:
+package br.com.nac.classe;
+
+public class JulgamentoPrisioneiro {
+	private int PENA_INOCENCIA = 13;
+	private int PENA_CONDENACAO_MUTUA = 15;
+	private int PENA_CONDENACAO_INDIVIDUAL = 10;
+	private int PENA_CONDENACAO_CUMPLICES = 11;
+
+	Resposta r = new Resposta();
+	
+	public int calculaPena(String respostaPrisioneiroA, String respostaPrisioneiroB) {
+		if (respostaPrisioneiroA == r.DELACAO()) {
+			if (respostaPrisioneiroB == r.DELACAO()) {
+				return PENA_CONDENACAO_MUTUA;
+			} else {
+				return PENA_INOCENCIA;
+			}
+		} else {
+			if (respostaPrisioneiroB == r.DELACAO()) {
+				return PENA_CONDENACAO_INDIVIDUAL;
+			} else {
+				return PENA_CONDENACAO_CUMPLICES;
+			}
+		}
+	}
+
+}
+
+Para ajustar a classe foi necessário criar uma classe Resposta que pudesse devolver um string "DELACAO" chamar na classe JulgamentoPrisioneiro para então comparar com a resposta do prisioneiro.
+
+Após esse ajuste foi possível realizar o teste sem erros.
+
+---------------------------------------------------------------
+
 
